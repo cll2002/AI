@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>员工述职 - 绩效系统</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="./images/logo1.png" alt="">
+                <span>绩效系统</span>
+            </div>
+            <div class="sidebar-menu">
+                <a class="menu-item" href="#">
+                    <img src="./images/a1.png" alt=""> 我的绩效
+                </a>
+                <a class="menu-item active" href="#">
+                    <img src="./images/a2.png" alt="">员工述职
+                </a>
+                <a class="menu-item" href="#">
+                    <img src="./images/a3.png" alt="">绩效反馈
+                </a>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="main-header">
+                <div class="header-right">
+                    <span>陈晨</span>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="main_content_m">
+                    <a class="page-title-bar" href="./page2.html">
+                        <div class="back-btn">&lt;</div>
+                        <div class="page-title">员工述职</div>
+                    </a>
+
+                    <div class="drag-wrap">
+                        <!-- 左侧：投放区域 -->
+                        <div class="drag-left">
+                            <div class="report-title">员工述职 - 2026年Q2 季度述职</div>
+                            <div class="user-info-row">
+                                姓名：陈晨 &nbsp;&nbsp;&nbsp; 部门：销售部 &nbsp;&nbsp;&nbsp; 岗位：销售专员
+                            </div>
+                            <div class="tip-text">
+                               <span > 提示：</span>您本季度的工作任务完成情况已展示在右侧，请将其<span class="blue">拖动至季度述职报告的对应区域</span> ，点击提交后即可进入 <span class="red">绩效反馈环节</span>。
+                            </div>
+
+                            <div class="report-title report-title1">季度述职报告</div>
+
+                            <div class="drop-item">
+                                <div class="drop-title">一、社群运营与用户触达</div>
+                                <div class="drop-box" data-target="1">拖入此处</div>
+                            </div>
+                            <div class="drop-item">
+                                <div class="drop-title">二、用户1V1跟进与转化</div>
+                                <div class="drop-box" data-target="2">拖入此处</div>
+                            </div>
+                            <div class="drop-item">
+                                <div class="drop-title">三、用户反馈与售后维护析</div>
+                                <div class="drop-box" data-target="3">拖入此处</div>
+                            </div>
+
+                            <div class="submit-area">
+                                <button class="submit-btn" id="submitBtn" disabled>提交述职（请点击）</button>
+                            </div>
+                        </div>
+
+                        <!-- 右侧固定打乱顺序：3 → 1 → 2 -->
+                        <div class="drag-right">
+                            <div class="drag-card" draggable="true" data-id="2">
+                                本季度共管理7个核心用户群，社群总人数新增 320 人，月度活跃用户占比达 65% ，社群整体互动率较上季度提升 18% 。
+                            </div>
+                            <div class="drag-card" draggable="true" data-id="1">
+                              本季度通过企业微信新增用户好友 156 人，开展1V1深度沟通 82 次，重点跟进意向用户 47 人，促成正式课签约 18 单，转化率达 17% 。
+                            </div>
+                            <div class="drag-card" draggable="true" data-id="3">
+                                跟进已购课用户的完课情况与学习反馈，处理课程调整、续费咨询等售后问题 21 次，用户满意度评分 4.7/5 。针对用户反馈已整理3条优化建议同步给教研部门。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDragId = null;
+        let correctCount = 0;
+        const total = 3;
+
+        // 开始拖拽
+        document.querySelectorAll('.drag-card').forEach(card => {
+            card.addEventListener('dragstart', e => {
+                currentDragId = card.dataset.id;
+                card.style.opacity = '0.5';
+            });
+            card.addEventListener('dragend', () => {
+                card.style.opacity = '1';
+            });
+        });
+
+        // 投放区域事件
+        document.querySelectorAll('.drop-box').forEach(box => {
+            box.addEventListener('dragover', e => {
+                e.preventDefault();
+                box.classList.add('highlight');
+            });
+
+            box.addEventListener('dragleave', () => {
+                box.classList.remove('highlight');
+            });
+
+            box.addEventListener('drop', e => {
+                e.preventDefault();
+                box.classList.remove('highlight');
+
+                const target = box.dataset.target;
+                if (currentDragId === target) {
+                    if (!box.classList.contains('filled')) {
+                        // ✅ 修复：获取 HTML 内容（保留样式），而不是纯文本
+                        const html = document.querySelector(`.drag-card[data-id="${currentDragId}"]`).innerHTML;
+                        box.innerHTML = html;
+                        box.classList.add('filled');
+                        correctCount++;
+                        checkSubmit();
+                    }
+                }
+            });
+        });
+
+        // 检查是否全部正确投放
+        function checkSubmit() {
+            const btn = document.getElementById('submitBtn');
+            if (correctCount === total) {
+                btn.classList.add('active');
+                btn.disabled = false;
+            }
+        }
+
+        // 提交
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            location.href = 'page4.html';
+        });
+    </script>
+</body>
+</html>

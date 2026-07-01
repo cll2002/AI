@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="./images/logo1.png" alt="">
+                <span>绩效系统</span>
+            </div>
+            <div class="sidebar-menu">
+                    <a class="menu-item active" href="#">
+                        <img src="./images/a1.png" alt=""> 我的绩效    
+                     </a>
+                     <a class="menu-item" href="#">
+                             <img src="./images/a2.png" alt="">员工述职
+                     </a>
+                      <a class="menu-item" href="#">
+                             <img src="./images/a3.png" alt="">绩效反馈
+                      </a>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="main-header">
+                <div class="header-right">
+                    <span>陈晨</span>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="main_content_m">
+                    
+                    <a class="page-title-bar" href="./page2.html">
+                        <div class="back-btn">&lt;</div>
+                        <div class="page-title">我的绩效</div>
+                    </a>
+    
+                    <div class="card">
+                        <div class="filter-form">
+                            <div class="form-item">
+                                <label>考核年度</label>
+                                <select>
+                                    <option>请选择</option>
+                                    <option>2026</option>
+                                    <option>2025</option>
+                                </select>
+                            </div>
+                            <div class="form-item">
+                                <label>考核周期</label>
+                                <select>
+                                    <option>请选择</option>
+                                    <option>一季度</option>
+                                    <option>二季度</option>
+                                    <option>三季度</option>
+                                    <option>四季度</option>
+                                    <option>上半年</option>
+                                    <option>下半年</option>
+                                </select>
+                            </div>
+                            <div class="form-item">
+                                <label>绩效状态</label>
+                                <select>
+                                    <option>请选择</option>
+                                    <option>已完成</option>
+                                    <option>进行中</option>
+                                </select>
+                            </div>
+                            <button class="btn-query">
+                                <img src="./images/a4.png" alt="">
+                                查询</button>
+                            <button class="btn-reset">重置</button>
+                        </div>
+
+                        <div class="table-container" style="width: 100%;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>考核年度</th>
+                                        <th>考核周期</th>
+                                        <th>绩效状态</th>
+                                        <th>当前节点</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>2026</td>
+                                            <td>二季度</td>
+                                            <td><span class="status-badge status-progress">进行中</span></td>
+                                            <td>反馈评估结果</td>
+                                        </tr>
+                                    <tr>
+                                        <td>2026</td>
+                                        <td>一季度</td>
+                                        <td><span class="status-badge status-completed">已完成</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025</td>
+                                        <td>下半年</td>
+                                        <td><span class="status-badge status-completed">已完成</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025</td>
+                                        <td>四季度</td>
+                                        <td><span class="status-badge status-completed">已完成</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025</td>
+                                        <td>三季度</td>
+                                        <td><span class="status-badge status-completed">已完成</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025</td>
+                                        <td>上半年</td>
+                                        <td><span class="status-badge status-completed">已完成</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025</td>
+                                        <td>二季度</td>
+                                        <td><span class="status-badge status-completed">已完成</span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025</td>
+                                        <td>一季度</td>
+                                        <td><span class="status-badge status-completed">已完成</span></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal-overlay" id="noticeModal">
+    <div class="modal-box">
+        <div class="modal-title">绩效流程通知</div>
+        <div class="modal-content">
+            你好，【2026年Q2销售部 季度绩效】</br>已进入【员工述职】环节。<br>
+            请点击下方按钮进入系统查看并办理。
+            <div class="modal-tip">提醒：请使用PC端访问，并连接公司网络</div>
+        </div>
+        <a href="./page3.html" class="modal-btn">进入员工述职</a>
+    </div>
+</div>
+
+<script>
+    setTimeout(() => {
+        document.getElementById('noticeModal').classList.add('show');
+    }, 1500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绩效反馈 - 绩效系统</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="./images/logo1.png" alt="">
+                <span>绩效系统</span>
+            </div>
+            <div class="sidebar-menu">
+                <a class="menu-item " href="#">
+                    <img src="./images/a1.png" alt=""> 我的绩效    
+                </a>
+                <a class="menu-item " href="#">
+                    <img src="./images/a2.png" alt="">员工述职
+                </a>
+                <a class="menu-item active" href="#">
+                    <img src="./images/a3.png" alt="">绩效反馈
+                </a>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="main-header">
+                <div class="header-right">
+                    <span>陈晨</span>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="main_content_m">
+                    
+                    <a class="page-title-bar" href="./page2.html">
+                        <div class="back-btn">&lt;</div>
+                        <div class="page-title">绩效反馈</div>
+                    </a>
+
+                    <div class="feedback-box">
+                        <div class="feedback-desc">
+                            述职已提交，你的直属主管<span>张磊</span>将根据你的述职及工作表现，给出本季度的绩效反馈。<br>
+                            请稍候.....
+                        </div>
+                        <div class="progress-line">
+                            <div class="progress-run" id="proBar"></div>
+                        </div>
+                        <div class="progress-num" id="proText">0%</div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div class="feedback-pop" id="feedPop">
+        <div class="pop-card">
+                <div class="pop-tip">收到一条来自</div>
+            <div class="pop-row">
+            </div>
+            <div class="pop-row">
+                <img src="./images/a7.jpg" alt="头像">
+                <div class="pop_row_r">
+                <span class="pop-row-text">直属主管张磊</span>
+                <span class="pop-row-text">的季度绩效反馈</span>
+                </div>
+            </div>
+
+            <a href="./page5.html" class="view-btn">查看反馈 （请点击）</a>
+        </div>
+    </div>
+
+    <script>
+        let num = 0;
+        let bar = document.getElementById('proBar');
+        let text = document.getElementById('proText');
+        let pop = document.getElementById('feedPop');
+
+        // 进度条从0加载到100%
+        let timer = setInterval(()=>{
+            num++;
+            bar.style.width = num + '%';
+            text.innerText = num + '%';
+            if(num >= 100){
+                clearInterval(timer);
+                pop.style.display = 'flex';
+            }
+        },30);
+    </script>
+</body>
+</html>
